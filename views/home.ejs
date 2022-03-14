@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+    <div class="container">
+        <h1 class="text-center"> I am Home</h1>
+        <p>
+            <%= homeData %>
+        </p>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <h1>Blogs</h1>
+            </div>
+            <div class="col-9 text-right" onclick="location.href = 'compose';">
+                <button class="btn btn-secondary">
+                    Compose
+                </button>
+            </div>
+            <hr>
+        </div>
+        <hr><br>
+        <% for (var i=0; i<blogOnWall.length; i++) { %>
+            <h2>
+                <a href="/post/<%=blogOnWall[i].title%>">
+                    <%=blogOnWall[i].title%>
+                        <br>
+                </a>
+            </h2>
+            <p>
+                <% if(blogOnWall[i].post.length> 200){ %>
+                    <%=blogOnWall[i].post.substring(0,200) + "...." %><a href="/post/<%=blogOnWall[i].title%>">Read
+                            More</a><br>
+                        <%}else{%>
+                            <%= blogOnWall[i].post%>
+                                <% }%>
+            </p>
+            <hr>
+            <%}%>
+    </div>
+    <%- include("partials/footer") %>
